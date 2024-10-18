@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>RMK AI - Server</title>
+  <title>TickHosting AI - Server</title>
 </head>
 <style type="text/css">
   body {
@@ -21,7 +21,7 @@
   }
   
   .console::before {
-    content: 'api@rkm:~$'
+    content: 'api@tickhosting:~$'
   }
   
   .denied {
@@ -68,7 +68,7 @@
 </style>
 <body onclick="playSound()">
 <!-- partial:index.partial.html -->
-<h3>RKM API, System Interface</h3>
+<h3>TickHosting API, System Interface</h3>
 <h3>Version 4.0.5, Alpha E</h3>
 <h3>404 Not found...</h3>
 <input hidden id="unmuteButton" type="button" onclick="playSound()" value="🔈 Unmute" />
@@ -284,7 +284,7 @@ function magicWord(type) {
 
 function waitForInput() {
   var h3 = document.createElement("h3");
-  h3.textContent = "api@rkm:~$ ";
+  h3.textContent = "api@tickhosting:~$ ";
   document.body.appendChild(h3);
 
   var element = document.createElement("div");
