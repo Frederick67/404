@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Chat4b - Server</title>
+  <title>RMK AI - Server</title>
 </head>
 <style type="text/css">
   body {
@@ -15,9 +15,13 @@
   h3,p {
     margin: 0px;
   }
+
+  .console {
+    margin: 0px;
+  }
   
   .console::before {
-    content: '>'
+    content: 'api@rkm:~$'
   }
   
   .denied {
@@ -66,48 +70,209 @@
 <!-- partial:index.partial.html -->
 <h3>RKM API, System Interface</h3>
 <h3>Version 4.0.5, Alpha E</h3>
-<h3>Ready...</h3>
+<h3>404 Not found...</h3>
 <input hidden id="unmuteButton" type="button" onclick="playSound()" value="🔈 Unmute" />
-<h3 id="element"></h3>
+<div id="element">
+</div>
+<h3 id="element2"></h3>
 <div hidden class="denied">
-    <img class="nedry-body" src="resources/body.png">
-    <img class="nedry-head" src="resources/head.png">
-    <img class="nedry-hand" src="resources/hand.png">
+    <img class="nedry-body" src="https://github.com/Frederick67/404/blob/main/resources/body.png?raw=true">
+    <img class="nedry-head" src="https://github.com/Frederick67/404/blob/main/resources/head.png?raw=true">
+    <img class="nedry-hand" src="https://github.com/Frederick67/404/blob/main/resources/hand.png?raw=true">
   </div>
-  <audio id="player" autoplay loop>
-    <source src="resources/ahahah.mp3" type="audio/mp3">
+  <audio id="player" loop>
+    <source src="https://github.com/Frederick67/404/raw/main/resources/ahahah.mp3" type="audio/mp3">
   </audio>
 <!-- partial -->
 </body>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/typeit/5.0.2/typeit.min.js'></script>
 <script type="text/javascript">
-  var type = new TypeIt('#element', { cursor: false});
-  let soundBool = false;
-addCommand(type,400, 55,`<p class='console'> access main program</p>`);
+ 
+//var type = new TypeIt('#element', { cursor: false});
+let soundBool = false;
+/*addCommand(type,400, 55,`<p class='console'> access main program</p>`);
 addCommand(type,1300,65,`<p class='console'> access main security</p>`);
 addCommand(type,1000,45,`<p class='console'> access security</p>`);
-addCommand(type,1000,45,`<p class='console'> access main security grid</p>`, true);
+addCommand(type,1000,45,`<p class='console'> access main security grid</p>`, true);*/
 
-magicWord(type);
+/*Commands
+access main program
+access main security
+access security
+access main security grid*/
 
-setTimeout(() => {document.getElementsByClassName("denied")[0].removeAttribute("hidden"); document.getElementById("unmuteButton").removeAttribute("hidden"); soundBool=true;},12000);
+let wait = true;
+waitForInput();
 
 
 
-function addCommand(type, pause, speed, command, last) {
-  const basicResponse = 'access: PERMISSION DENIED.';
-  let response = last ? basicResponse + '....and....' : basicResponse;
-  type.pause(pause)
-      .options({speed: speed})
-      .type(command)
-      .pause(200)
-      .options({speed: 0})
-      .type(response)
-      .break();
-}
+var access_main_program_command = "access main program";
+var access_main_security_command = "access main security";
+var access_security_command = "access security";
+var access_main_security_grid_command = "access main security grid";
+
+var access_main_program_char = access_main_program_command.split("");
+var access_main_security_char = access_main_security_command.split("");
+var access_security_char = access_security_command.split("");
+var access_main_security_grid_char = access_main_security_grid_command.split("");
+
+
+var access_main_program = true;
+var access_main_security = false;
+var access_security = false;
+var access_main_security_grid = false;
+type = document.getElementById("element");
+var counter = 0;
+var access_main_program_lenght = access_main_program_char.length;
+var access_main_security_lenght = access_main_security_char.length;
+var access_security_lenght = access_security_char.length;
+var access_main_security_grid_lenght = access_main_security_grid_char.length;
+
+const basicResponse = 'access: PERMISSION DENIED.';
+document.addEventListener('keydown', function (event) {
+  wait = false;
+  if(access_main_program)
+  {
+    if(document.getElementById("access_main_program") == null)
+    {
+      //type.InnerHTML += "<p id='access_main_program' class='console'></p>";
+      //add the <p> to the div
+      var p = document.createElement("h3");
+      p.setAttribute("id", "access_main_program");
+      p.setAttribute("class", "console");
+      document.getElementById("element").appendChild(p);
+
+    }
+      
+    var p = document.getElementById("access_main_program");
+
+    //p.InnerHTML += access_main_program_char[counter];
+    //add the char to the <p>
+    var text = document.createTextNode(access_main_program_char[counter]);
+    p.appendChild(text);
+    counter++;
+    if(counter == access_main_program_lenght)
+    {
+      //add a br and the response
+      var br = document.createElement("br");
+      p.appendChild(br);
+      var text = document.createTextNode(basicResponse);
+      p.appendChild(text);
+      access_main_program = false;
+      access_main_security = true;
+      counter = 0;
+    }
+  }
+
+    if (access_main_security)
+    {
+      if(document.getElementById("access_main_security") == null)
+      {
+        //type.InnerHTML += "<p id='access_main_program' class='console'></p>";
+        //add the <p> to the div
+        var p = document.createElement("h3");
+        p.setAttribute("id", "access_main_security");
+        p.setAttribute("class", "console");
+        document.getElementById("element").appendChild(p);
+
+      }
+        
+      var p = document.getElementById("access_main_security");
+
+      //p.InnerHTML += access_main_program_char[counter];
+      //add the char to the <p>
+      var text = document.createTextNode(access_main_security_char[counter]);
+      p.appendChild(text);
+      counter++;
+      if(counter == access_main_security_lenght)
+      {
+        //add a br and the response
+        var br = document.createElement("br");
+        p.appendChild(br);
+        var text = document.createTextNode(basicResponse);
+        p.appendChild(text);
+        access_main_security = false;
+        access_security = true;
+        counter = 0;
+      }
+    }
+
+    if (access_security)
+    {
+      if(document.getElementById("access_security") == null)
+      {
+        //type.InnerHTML += "<p id='access_main_program' class='console'></p>";
+        //add the <p> to the div
+        var p = document.createElement("h3");
+        p.setAttribute("id", "access_security");
+        p.setAttribute("class", "console");
+        document.getElementById("element").appendChild(p);
+
+      }
+      var p = document.getElementById("access_security");
+      //p.InnerHTML += access_main_program_char[counter];
+      //add the char to the <p>
+      var text = document.createTextNode(access_security_char[counter]);
+      p.appendChild(text);
+      counter++;
+      if(counter == access_security_lenght)
+      {
+        //add a br and the response
+        var br = document.createElement("br");
+        p.appendChild(br);
+        var text = document.createTextNode(basicResponse);
+        p.appendChild(text);
+        access_security = false;
+        access_main_security_grid = true;
+        counter = 0;
+      }
+    }
+
+    if (access_main_security_grid)
+    {
+      if(document.getElementById("access_main_security_grid") == null)
+      {
+        //type.InnerHTML += "<p id='access_main_program' class='console'></p>";
+        //add the <p> to the div
+        var p = document.createElement("h3");
+        p.setAttribute("id", "access_main_security_grid");
+        p.setAttribute("class", "console");
+        document.getElementById("element").appendChild(p);
+
+      }
+        
+      var p = document.getElementById("access_main_security_grid");
+
+      //p.InnerHTML += access_main_program_char[counter];
+      //add the char to the <p>
+      var text = document.createTextNode(access_main_security_grid_char[counter]);
+      p.appendChild(text);
+      counter++;
+      if(counter == access_main_security_grid_lenght)
+      {
+        //add a br and the response
+        var br = document.createElement("br");
+        p.appendChild(br);
+        var text = document.createTextNode(basicResponse);
+        p.appendChild(text);
+        access_main_security_grid = false;
+        counter = 0;
+      }
+    }
+
+    if(!access_main_program && !access_main_security && !access_security && !access_main_security_grid)
+    {
+      var type2 = new TypeIt('#element2', { cursor: false});
+      document.getElementsByClassName("denied")[0].removeAttribute("hidden"); document.getElementById("unmuteButton").removeAttribute("hidden"); soundBool=true;
+      magicWord(type2);
+
+      
+    }
+
+});
+
 
 function magicWord(type) {
-  type.pause(1500);
   for (var index=0;index<40;index++) {
     type.pause(4)
       .options({speed: 0})
@@ -115,6 +280,43 @@ function magicWord(type) {
       .break();
   }
 }
+
+
+function waitForInput() {
+  var h3 = document.createElement("h3");
+  h3.textContent = "api@rkm:~$ ";
+  document.body.appendChild(h3);
+
+  var element = document.createElement("div");
+  document.body.appendChild(element);
+
+  var cursorVisible = true;
+
+  function toggleCursor() {
+    if (wait) { // Verifica se wait è false
+      if (cursorVisible) {
+        h3.innerHTML += "▮";
+      } else {
+        //remove only the last char
+        h3.innerHTML = h3.innerHTML.slice(0, -1);
+      }
+      cursorVisible = !cursorVisible;
+    }
+  }
+
+  // Aggiungi un intervallo per il cursore
+  var cursorInterval = setInterval(toggleCursor, 500);
+
+  // Aggiungi un evento per interrompere il blinking quando viene premuto un tasto
+  document.addEventListener("keydown", function () {
+    clearInterval(cursorInterval);
+    h3.innerHTML = ""; // Rimuovi il cursore
+    element.innerHTML = ""; // Rimuovi il cursore
+  });
+}
+
+
+// Chiamare la funzione magicWord per avviare il proces
 
 const sound = document.getElementById('player');
 
@@ -127,7 +329,9 @@ sound.addEventListener('pause', (event) => {
 });
 
 function playSound() {
+  console.log("playSound" + soundBool);
     if(soundBool)
+      
       document.getElementById("player").play();
   }
 </script>
